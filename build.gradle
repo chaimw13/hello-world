@@ -1,0 +1,42 @@
+
+plugins
+{
+id "java"
+}
+
+def  buildVersion = 2.7;
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Doit'
+        attributes 'Build-Revision':  buildVersion
+    }
+}
+
+tasks.register("Hi")
+{
+    doLast
+	{
+   	 	println("Hello Professor");
+print("sourcesets are: ");
+println(sourceSets);
+
+println("The sourcesets are: $sourceSets");
+
+println(sourceSets['main']);
+println(sourceSets['main']['java'].srcDirs);
+
+	}
+}
+
+
+tasks.register("bye")
+{
+   dependsOn("Hi");
+   doFirst  { 
+       println(" ***   Bye Bye Prof");
+    }
+}
+
+
+
